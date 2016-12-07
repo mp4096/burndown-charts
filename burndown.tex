@@ -1,0 +1,47 @@
+\documentclass[a4paper, 11pt, oneside, british]{article}
+
+
+\input{setup/packages}
+\input{setup/settings}
+
+
+\def\chartWidth{16}
+\def\chartHeight{22}
+\def\hoursPerWeekA{40}
+\def\hoursPerWeekB{38}
+
+
+\begin{document}
+  \begin{center}
+    \textbf{\Large Burndown chart, week} % Write the week number by hand
+
+    \vspace{1 cm}
+
+    \begin{tikzpicture}
+      % Draw the vertical lines
+      \foreach \idx/\day in {%
+        0/Monday,%
+        1/Tuesday,%
+        2/Wednesday,%
+        3/Thursday,%
+        4/Friday,%
+        5/Saturday,%
+        6/Sunday%
+      } {
+        \draw[black!30]
+          (\chartWidth*\idx/7 + \chartWidth/14, 0) node[black, below] {\day}
+          --
+          +(0, \chartHeight);
+      }
+
+
+      % Draw the horizontal lines
+      \foreach \hrs in {\hoursPerWeekA, \hoursPerWeekB, ..., 0} {
+        \draw
+          (0, \chartHeight*\hrs/\hoursPerWeekA) node[left] {\hrs}
+          --
+          +(\chartWidth, 0);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{document}
