@@ -28,10 +28,9 @@
         5/Saturday,%
         6/Sunday%
       } {
-        \draw[black!30]
-          (\chartWidth*\idx/7 + \chartWidth/14, 0) node[black, below] {\day}
-          --
-          +(0, \chartHeight);
+        \draw[black!30] (\chartWidth*\idx/7, 0) -- +(0, \chartHeight);
+        \draw[black!30] (\chartWidth*\idx/7 + \chartWidth/7, 0) -- +(0, \chartHeight);
+        \node[below] at (\chartWidth*\idx/7 + \chartWidth/14, 0)  {\day};
       }
 
 
